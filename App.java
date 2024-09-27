@@ -20,29 +20,37 @@ public class App
         Configuration con=new  Configuration();
         con.configure("hibernate.cfg.xml");
         SessionFactory fac=con.buildSessionFactory();
+        
+        
         Student s=new Student();
-        Scanner sc=new Scanner(System.in);
-        for(int i=1;i<=2;i++) {
-        	int a=sc.nextInt();
-        	s.setId(a);
-        	String name=sc.next();
-        	s.setName(name);
-        	String year=sc.next();
-        	s.setYear(year);
-        }
+        s.setName("s");
+        s.setYear("ty");
+//        Scanner sc=new Scanner(System.in);
+//        for(int i=1;i<=2;i++) {
+//        	int a=sc.nextInt();
+//        	s.setId(a);
+//        	String name=sc.next();
+//        	s.setName(name);
+//        	String year=sc.next();
+//        	s.setYear(year);
+//        }
         Session session=fac.openSession();
         Transaction t=session.beginTransaction();
         session.save(s);
         t.commit();
-        for(int i=1;i<=2;i++) {
-        	int a=sc.nextInt();
-        	s.setId(a);
-        	String name=sc.next();
-        	s.setName(name);
-        	String year=sc.next();
-        	s.setYear(year);
-        }
+//        for(int i=1;i<=2;i++) {
+//        	int a=sc.nextInt();
+//        	s.setId(a);
+//        	String name=sc.next();
+//        	s.setName(name);
+//        	String year=sc.next();
+//        	s.setYear(year);
+//        }
+       // for(int i=1;i<7;i++) {
+        	s=(Student)session.load(Student.class, s.getId());
         System.out.println(s);
+       // } 
+        
         session.close();
     }
 }

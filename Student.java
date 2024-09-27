@@ -1,11 +1,14 @@
 package com.springcore.hibernate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+
 
 @Entity
 public class Student {
-	@Id
+	@Id @GeneratedValue
 	private int id;
 	private String name;
 	private String year;
@@ -41,5 +44,6 @@ public class Student {
 	public void setYear(String year) {
 		this.year = year;
 	}
+	
 	
 }
